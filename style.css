@@ -1,0 +1,207 @@
+/* =========================================
+   CHARTE GRAPHIQUE - LE LABYRINTHE EN CHAMP THÉ
+   ========================================= */
+:root {
+    --brand-dark-green: #2D4A22; /* Vert profond du guide  */
+    --brand-mid-green: #50964B;  /* Vert moyen utilisé pour les accents  */
+    --brand-tan: #A68B5B;        /* Teinte dorée/sable pour les labels  */
+    --brand-beige: #F2E8CF;      /* Fond crème léger pour le site  */
+    --white: #FFFFFF;
+    --text-color: #333333;
+    --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* =========================================
+   STRUCTURE GÉNÉRALE
+   ========================================= */
+body {
+    font-family: 'Montserrat', 'Helvetica Neue', Arial, sans-serif;
+    background-color: var(--brand-beige); 
+    color: var(--brand-dark-green); 
+    margin: 0;
+    line-height: 1.6;
+}
+
+/* =========================================
+   HEADER & LOGO (OPTIMISÉS)
+   ========================================= */
+.top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--white);
+    padding: 10px 40px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.mini-logo {
+    height: 55px; /* Taille réduite pour plus de discrétion */
+    width: auto;
+}
+
+.title-group h1 {
+    font-size: 1.1rem;
+    margin: 0;
+    color: var(--brand-dark-green); 
+    letter-spacing: 1.5px;
+    font-weight: 700;
+}
+
+.title-group span {
+    font-size: 0.7rem;
+    color: var(--brand-tan); 
+    text-transform: uppercase;
+}
+
+/* =========================================
+   SECTION FILTRES (UX AMÉLIORÉE)
+   ========================================= */
+.filters {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.input-group {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-group i {
+    position: absolute;
+    left: 12px;
+    color: var(--brand-mid-green); 
+}
+
+input, select {
+    padding: 10px 15px 10px 35px;
+    border: 1px solid #E0E0E0;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    outline: none;
+    transition: border-color 0.3s;
+    background-color: var(--white);
+    color: var(--brand-dark-green); 
+}
+
+input:focus, select:focus {
+    border-color: var(--brand-mid-green); 
+}
+
+/* Ajustement spécifique pour les select sans icône à gauche */
+#zoneFilter, #cityFilter {
+    padding-left: 15px;
+}
+
+/* =========================================
+   GRILLE DE CARTES (ESPACEMENT OPTIMISÉ)
+   ========================================= */
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 35px; /* Augmentation de l'espace pour éviter l'effet "collé" */
+    padding: 40px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* =========================================
+   CARTES REVENDEURS (UI)
+   ========================================= */
+.card {
+    background: var(--white);
+    border-radius: 15px;
+    padding: 25px;
+    border-top: 6px solid var(--brand-mid-green); 
+    box-shadow: var(--shadow);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+}
+
+.card-header {
+    margin-bottom: 18px;
+    border-bottom: 1px solid #F0F0F0;
+    padding-bottom: 12px;
+}
+
+.card-tag {
+    font-size: 0.65rem;
+    font-weight: 800;
+    color: var(--brand-tan); 
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.card h3 {
+    margin: 6px 0 0;
+    font-size: 1.25rem;
+    color: var(--brand-dark-green); 
+}
+
+.card-body p {
+    margin: 10px 0;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.card-body i {
+    color: var(--brand-mid-green); 
+    font-size: 1rem;
+    width: 20px;
+    text-align: center;
+}
+
+.card-footer {
+    margin-top: auto;
+    padding-top: 15px;
+    border-top: 1px dashed #E0E0E0;
+    font-size: 0.85rem;
+    color: #555555;
+}
+
+.card-footer strong {
+    color: var(--brand-dark-green); 
+}
+
+/* =========================================
+   RESPONSIVE
+   ========================================= */
+@media (max-width: 768px) {
+    .top-bar {
+        flex-direction: column;
+        gap: 15px;
+        padding: 20px;
+    }
+    
+    .filters {
+        width: 100%;
+        justify-content: center;
+    }
+
+    input, select {
+        width: 100%;
+    }
+    
+    .cards-grid {
+        padding: 20px;
+        gap: 20px;
+    }
+}
