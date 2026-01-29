@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Annuaire Revendeurs | Le Labyrinthe</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+  <header class="top-bar">
+    <div class="header-left">
+        <img src="logo.png" alt="Logo" class="mini-logo">
+        <div class="title-group">
+            <h1>REVENDEURS</h1>
+            <span>Le Labyrinthe en Champ Thé</span>
+        </div>
+    </div>
+    <nav class="filters">
+        <div class="input-group">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" id="searchInput" placeholder="Rechercher...">
+        </div>
+        
+        <select id="zoneFilter">
+    <option value="tous">Toutes les zones</option>
+    <option value="Nord">Secteur Nord</option>
+    <option value="Sud">Secteur Sud</option>
+    <option value="Est">Secteur Est</option>
+    <option value="Ouest">Secteur Ouest</option>
+    <option value="Centre">Secteur Centre</option> </select>
+        </select>
+
+        <select id="cityFilter">
+            <option value="toutes">Toutes les villes</option>
+        </select>
+    </nav>
+</header>
+
+    <main class="content-area">
+        <div id="grid-revendeurs" class="cards-grid">
+            </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
