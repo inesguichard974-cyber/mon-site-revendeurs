@@ -2,28 +2,125 @@
    CHARTE GRAPHIQUE - LE LABYRINTHE EN CHAMP THÉ
    ========================================= */
 :root {
-    --brand-dark-green: #2D4A22; /* Vert profond du guide  */
-    --brand-mid-green: #50964B;  /* Vert moyen utilisé pour les accents  */
-    --brand-tan: #A68B5B;        /* Teinte dorée/sable pour les labels  */
-    --brand-beige: #F2E8CF;      /* Fond crème léger pour le site  */
+    --brand-dark-green: #2D4A22; /* Vert profond */
+    --brand-mid-green: #50964B;  /* Vert moyen accent */
+    --brand-tan: #A68B5B;        /* Doré / Sable */
+    --brand-beige: #F2E8CF;      /* Fond crème */
     --white: #FFFFFF;
     --text-color: #333333;
+    --error-red: #c62828;
     --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
 /* =========================================
    STRUCTURE GÉNÉRALE
    ========================================= */
+* {
+    box-sizing: border-box;
+}
+
 body {
     font-family: 'Montserrat', 'Helvetica Neue', Arial, sans-serif;
-    background-color: var(--brand-beige); 
-    color: var(--brand-dark-green); 
+    background-color: var(--brand-beige);
+    color: var(--brand-dark-green);
     margin: 0;
     line-height: 1.6;
 }
 
 /* =========================================
-   HEADER & LOGO (OPTIMISÉS)
+   ÉCRAN DE CONNEXION INTERNE
+   ========================================= */
+.login-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(45, 74, 34, 0.88);
+    backdrop-filter: blur(8px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.login-card {
+    background: var(--white);
+    padding: 35px 30px;
+    border-radius: 16px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+    text-align: center;
+    max-width: 400px;
+    width: 90%;
+}
+
+.login-logo {
+    height: 60px;
+    width: auto;
+    margin-bottom: 15px;
+}
+
+.login-card h2 {
+    margin: 0 0 8px 0;
+    color: var(--brand-dark-green);
+    font-size: 1.3rem;
+    letter-spacing: 0.5px;
+}
+
+.login-card p {
+    font-size: 0.85rem;
+    color: #666666;
+    margin-bottom: 20px;
+}
+
+.login-card form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.login-card input[type="password"] {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #D1D5DB;
+    border-radius: 8px;
+    font-size: 1rem;
+    outline: none;
+    text-align: center;
+    transition: border-color 0.2s ease;
+}
+
+.login-card input[type="password"]:focus {
+    border-color: var(--brand-mid-green);
+}
+
+.login-card button {
+    width: 100%;
+    padding: 12px;
+    background-color: var(--brand-mid-green);
+    color: var(--white);
+    border: none;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.login-card button:hover {
+    background-color: var(--brand-dark-green);
+}
+
+.login-error {
+    color: var(--error-red);
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-top: 12px;
+    margin-bottom: 0;
+}
+
+/* =========================================
+   HEADER & LOGO
    ========================================= */
 .top-bar {
     display: flex;
@@ -44,26 +141,26 @@ body {
 }
 
 .mini-logo {
-    height: 55px; /* Taille réduite pour plus de discrétion */
+    height: 55px;
     width: auto;
 }
 
 .title-group h1 {
     font-size: 1.1rem;
     margin: 0;
-    color: var(--brand-dark-green); 
+    color: var(--brand-dark-green);
     letter-spacing: 1.5px;
     font-weight: 700;
 }
 
 .title-group span {
     font-size: 0.7rem;
-    color: var(--brand-tan); 
+    color: var(--brand-tan);
     text-transform: uppercase;
 }
 
 /* =========================================
-   SECTION FILTRES (UX AMÉLIORÉE)
+   SECTION FILTRES
    ========================================= */
 .filters {
     display: flex;
@@ -80,7 +177,7 @@ body {
 .input-group i {
     position: absolute;
     left: 12px;
-    color: var(--brand-mid-green); 
+    color: var(--brand-mid-green);
 }
 
 input, select {
@@ -91,38 +188,48 @@ input, select {
     outline: none;
     transition: border-color 0.3s;
     background-color: var(--white);
-    color: var(--brand-dark-green); 
+    color: var(--brand-dark-green);
 }
 
 input:focus, select:focus {
-    border-color: var(--brand-mid-green); 
+    border-color: var(--brand-mid-green);
 }
 
-/* Ajustement spécifique pour les select sans icône à gauche */
 #zoneFilter, #cityFilter {
     padding-left: 15px;
 }
 
 /* =========================================
-   GRILLE DE CARTES (ESPACEMENT OPTIMISÉ)
+   GRILLE DE CARTES & ÉTATS VIDES
    ========================================= */
 .cards-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-    gap: 35px; /* Augmentation de l'espace pour éviter l'effet "collé" */
+    gap: 35px;
     padding: 40px;
     max-width: 1400px;
     margin: 0 auto;
 }
 
+.no-result {
+    grid-column: 1 / -1;
+    text-align: center;
+    font-size: 1.1rem;
+    color: var(--brand-dark-green);
+    background: var(--white);
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+}
+
 /* =========================================
-   CARTES REVENDEURS (UI)
+   CARTES REVENDEURS
    ========================================= */
 .card {
     background: var(--white);
     border-radius: 15px;
     padding: 25px;
-    border-top: 6px solid var(--brand-mid-green); 
+    border-top: 6px solid var(--brand-mid-green);
     box-shadow: var(--shadow);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     display: flex;
@@ -143,7 +250,7 @@ input:focus, select:focus {
 .card-tag {
     font-size: 0.65rem;
     font-weight: 800;
-    color: var(--brand-tan); 
+    color: var(--brand-tan);
     text-transform: uppercase;
     letter-spacing: 0.5px;
 }
@@ -151,7 +258,7 @@ input:focus, select:focus {
 .card h3 {
     margin: 6px 0 0;
     font-size: 1.25rem;
-    color: var(--brand-dark-green); 
+    color: var(--brand-dark-green);
 }
 
 .card-body p {
@@ -163,7 +270,7 @@ input:focus, select:focus {
 }
 
 .card-body i {
-    color: var(--brand-mid-green); 
+    color: var(--brand-mid-green);
     font-size: 1rem;
     width: 20px;
     text-align: center;
@@ -178,7 +285,7 @@ input:focus, select:focus {
 }
 
 .card-footer strong {
-    color: var(--brand-dark-green); 
+    color: var(--brand-dark-green);
 }
 
 /* =========================================
@@ -193,10 +300,12 @@ input:focus, select:focus {
     
     .filters {
         width: 100%;
-        justify-content: center;
+        flex-direction: column;
     }
 
-    input, select {
+    .input-group,
+    input, 
+    select {
         width: 100%;
     }
     
