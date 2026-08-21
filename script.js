@@ -1,6 +1,5 @@
 // =============================================================
 // CONFIGURATION & SÉCURITÉ
-// Empreinte SHA-256 pour le mot de passe "0211@"
 // =============================================================
 const PASSWORD_HASH = "e8cf1689ea523588fa8e202570077ca827f8d689b25547071db136894c7b802e";
 const AUTH_KEY = "auth_labyrinthe_token";
@@ -16,7 +15,7 @@ async function sha256(message) {
 }
 
 // =============================================================
-// VÉRIFICATION D'AUTHENTIFICATION AU DÉMARRAGE
+// GESTION CONNEXION PERSISTANTE
 // =============================================================
 document.addEventListener('DOMContentLoaded', () => {
     const loginOverlay = document.getElementById('login-overlay');
@@ -24,25 +23,19 @@ document.addEventListener('DOMContentLoaded', () => {
     const passwordInput = document.getElementById('passwordInput');
     const loginError = document.getElementById('loginError');
 
-    // Récupération du jeton mémorisé sur l'ordinateur
     let savedToken = null;
     try {
         savedToken = localStorage.getItem(AUTH_KEY) || sessionStorage.getItem(AUTH_KEY);
-    } catch (e) {
-        console.warn("Stockage local inaccessible :", e);
-    }
+    } catch (e) {}
 
     if (savedToken === PASSWORD_HASH) {
-        // Déjà connecté -> on masque l'écran de connexion et on charge
         if (loginOverlay) loginOverlay.style.display = 'none';
         loadData();
     } else {
-        // Non connecté -> on affiche l'écran de mot de passe
         if (loginOverlay) loginOverlay.style.display = 'flex';
         if (passwordInput) passwordInput.focus();
     }
 
-    // Gestion de la soumission du mot de passe
     if (loginForm) {
         loginForm.addEventListener('submit', async (e) => {
             e.preventDefault();
@@ -53,9 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 try {
                     localStorage.setItem(AUTH_KEY, PASSWORD_HASH);
                     sessionStorage.setItem(AUTH_KEY, PASSWORD_HASH);
-                } catch (err) {
-                    console.error("Erreur de sauvegarde locale :", err);
-                }
+                } catch (err) {}
 
                 if (loginOverlay) loginOverlay.style.display = 'none';
                 if (loginError) loginError.style.display = 'none';
@@ -70,7 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // =============================================================
-// CHARGEMENT DU FICHIER CSV (Compatible GitHub Pages)
+// CHARGEMENT ET PARSING INTELLIGENT DU CSV
 // =============================================================
 async function loadData() {
     const csvPaths = ['./revendeurs.csv', 'revendeurs.csv', './Revendeurs.csv', 'Revendeurs.csv'];
@@ -83,50 +74,53 @@ async function loadData() {
                 csvData = await response.text();
                 break;
             }
-        } catch (e) {
-            // Essaie l'alternative
-        }
+        } catch (e) {}
     }
 
     if (!csvData) {
         const grid = document.getElementById('grid-revendeurs');
         if (grid) {
-            grid.innerHTML = `
-                <div class="no-result">
-                    <p><strong>Fichier revendeurs.csv introuvable sur GitHub Pages.</strong></p>
-                    <small>Vérifiez que le fichier se nomme bien <code>revendeurs.csv</code> dans votre dépôt GitHub.</small>
-                </div>
-            `;
+            grid.innerHTML = `<p class="no-result">Fichier revendeurs.csv introuvable.</p>`;
         }
         return;
     }
 
-    parseAndDisplayCSV(csvData);
+    parseDynamicCSV(csvData);
 }
 
-function parseAndDisplayCSV(data) {
-    const rows = data.split(/\r?\n/);
-    const firstRow = rows[0] || "";
-    const separator = firstRow.includes(';') ? ';' : ',';
+function parseDynamicCSV(data) {
+    const lines = data.split(/\r?\n/).filter(line => line.trim() !== "");
+    if (lines.length === 0) return;
 
-    allRevendeurs = rows
-        .map(row => row.trim())
-        .filter(row => row !== "" && !row.toUpperCase().startsWith("CODE;"))
-        .map(row => {
-            const cols = row.split(separator);
-            return {
-                code: cols[0]?.trim() || "",
-                nom: cols[1]?.trim() || "Inconnu",
-                cp: cols[2]?.trim() || "",
-                ville: cols[3]?.trim() || "",
-                zone: cols[4]?.trim() || "NC",
-                produits: cols[5]?.trim() || "Thé",
-                statut: cols[6]?.trim() || "",
-                type: cols[7]?.trim() || "",
-                note: cols[8]?.trim() || ""
-            };
-        })
-        .sort((a, b) => a.nom.localeCompare(b.nom, 'fr', { sensitivity: 'base' }));
+    // Détection du séparateur (; ou ,)
+    const separator = lines[0].includes(';') ? ';' : ',';
+    
+    // Lecture des en-têtes (ligne 1)
+    const headers = lines[0].split(separator).map(h => h.trim().toUpperCase());
+
+    // Recherche automatique de l'index de chaque colonne par mot-clé
+    const idxNom = headers.findIndex(h => h === "NOM" || h.includes("ENSEIGNE") || h.includes("REVENDEUR"));
+    const idxCP = headers.findIndex(h => h.includes("POSTAL") || h === "CP");
+    const idxVille = headers.findIndex(h => h.includes("COMMUNE") || h.includes("VILLE"));
+    const idxZone = headers.findIndex(h => h.includes("ZONE") || h.includes("SECTEUR"));
+    const idxProduits = headers.findIndex(h => h.includes("PRODUIT"));
+    const idxType = headers.findIndex(h => h.includes("TYPE"));
+
+    // Traitement des lignes de données (à partir de la 2e ligne)
+    allRevendeurs = lines.slice(1).map(line => {
+        const cols = line.split(separator);
+
+        return {
+            nom: (idxNom !== -1 ? cols[idxNom] : cols[1])?.trim() || "Inconnu",
+            cp: (idxCP !== -1 ? cols[idxCP] : cols[2])?.trim() || "",
+            ville: (idxVille !== -1 ? cols[idxVille] : cols[3])?.trim() || "",
+            zone: (idxZone !== -1 ? cols[idxZone] : cols[4])?.trim() || "NC",
+            produits: (idxProduits !== -1 ? cols[idxProduits] : cols[5])?.trim() || "Thé",
+            type: (idxType !== -1 ? cols[idxType] : "")?.trim() || ""
+        };
+    })
+    .filter(r => r.nom !== "Inconnu" && !r.nom.toUpperCase().includes("LISTE"))
+    .sort((a, b) => a.nom.localeCompare(b.nom, 'fr', { sensitivity: 'base' }));
 
     setupCityFilter();
     setupEvents();
@@ -152,8 +146,12 @@ function setupCityFilter() {
 
     citySelect.innerHTML = '<option value="toutes">Toutes les villes</option>';
 
-    const uniqueCities = [...new Set(allRevendeurs.map(r => r.ville).filter(v => v && v.length > 0))]
-        .sort((a, b) => a.localeCompare(b, 'fr', { sensitivity: 'base' }));
+    // Liste unique et propre des VILLES (non vides et sans chiffres)
+    const uniqueCities = [...new Set(
+        allRevendeurs
+            .map(r => r.ville)
+            .filter(v => v && isNaN(v.trim())) // Empêche d'ajouter des codes postaux par erreur
+    )].sort((a, b) => a.localeCompare(b, 'fr', { sensitivity: 'base' }));
 
     uniqueCities.forEach(city => {
         const option = document.createElement('option');
@@ -172,8 +170,7 @@ function updateDisplay() {
         const matchesSearch = r.nom.toLowerCase().includes(search) || 
                               r.produits.toLowerCase().includes(search) ||
                               r.ville.toLowerCase().includes(search) ||
-                              r.cp.toLowerCase().includes(search) ||
-                              r.type.toLowerCase().includes(search);
+                              r.cp.includes(search);
 
         const matchesZone = (zone === "tous") || (r.zone.toLowerCase() === zone.toLowerCase());
         const matchesCity = (city === "toutes") || (r.ville.toLowerCase() === city.toLowerCase());
@@ -185,14 +182,14 @@ function updateDisplay() {
 }
 
 // =============================================================
-// RENDU DES CARTES
+// RENDU VISUEL DES CARTES
 // =============================================================
 function render(list) {
     const grid = document.getElementById('grid-revendeurs');
     if (!grid) return;
 
     if (list.length === 0) {
-        grid.innerHTML = `<p class="no-result">Aucun revendeur ne correspond à votre recherche.</p>`;
+        grid.innerHTML = `<p class="no-result">Aucun revendeur ne correspond à vos critères.</p>`;
         return;
     }
 
