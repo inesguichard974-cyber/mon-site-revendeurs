@@ -1,53 +1,53 @@
-Code;NOM;Prénom;Code postal;Commune;Zone;Produits
-ARTIS;Artisanat Océan Indien;;97400;Saint-Denis;Nord;Thé
-ASSO116;Association Place au Vrac;;97424;Saint-Leu;Ouest;Thé
-ASSOC86;EI Bertrand Bannerot;;97413;Cilaos;Centre;Thé
-ATELI03;Atelier Alexandra;;97440;Saint-André;Nord;Thé
-ATELI05;Atelier de Flo;;97410;Saint-Pierre;Sud;Thé
-BARIL;Le Baril de Poudre;;97442;Saint-Philippe;Sud;Thé
-BITAS;Bitasyon Bio;;97442;Saint-Philippe;Sud;Thé
-BOYER;Boyer Patricia;;97410;Saint-Pierre;Sud;Thé
-CASEA;La Case à Chocolat;;97400;Saint-Denis;Nord;Thé
-CASEV;La Case Volcan;;97442;Saint-Philippe;Sud;Thé
-CAZAN;La Cazanou;;97433;Salazie;Centre;Thé
-CORAI;Corail Hélicoptères SAS;;97434;Saint-Paul;Ouest;Thé
-CURPA;Cœur du Palmier;;97434;Saint-Paul;Ouest;Thé
-DOMAI;Domaine des Tourelles;;97431;La Plaine-des-Palmistes;Centre;Thé
-DOMAI05;Domaine de Bellevue;;97450;Saint-Louis;Sud;Thé
-DOMIT;Domitile Artisanat;;97430;Le Tampon;Sud;Thé
-DOMIT01;Domitile Marie-Line;;97480;Saint-Joseph;Sud;Thé
-FEELO;La Fée Lokale;;97460;Saint-Paul;Ouest;Thé
-GALER;La Galerie Artisanale;;97490;Sainte-Clotilde;Nord;Thé
-JARDI;Le Jardin des Parfums & des Épices;;97442;Saint-Philippe;Sud;Thé
-JARDI02;Les Jardineries de Bourbon;;97432;Ravine des Cabris;Sud;Thé
-JARDI03;Les Jardins d'Héva;;97433;Salazie;Centre;Thé
-JARDI05;Jardin d'Eden;;97434;Saint-Paul;Ouest;Thé
-KARIN;Karine Artisanat;;97400;Saint-Denis;Nord;Thé
-KAZAK;La Kaz à Kam;;97427;L'Étang-Salé;Sud;Thé
-LETAL;L'Étal Saint-Joseph;;97480;Saint-Joseph;Sud;Thé
-LIQUO;Liquoristerie Mamzel (Rhum Mamzel);;97434;Saint-Leu;Ouest;Thé
-NANAS;Nanas Vanille;;97410;Saint-Pierre;Sud;Thé
-NANAS;Nanas Vanille;;97400;Saint-Denis;Nord;Thé
-NATHA;Nathalie Leichnig;;97442;Saint-Philippe;Sud;Thé
-NATUR07;Natur'Run;;97431;La Plaine-des-Palmistes;Centre;Thé
-OFFIC;Office du Tourisme;;97400;Saint-Denis;Nord;Thé
-OFFIC04;O.T.I. de l'Est;;97412;Bras-Panon;Est;Thé
-OTHE;SARL O'Thé;;97424;Piton Saint-Leu;Ouest;Thé
-OTISU01;OTI Sud;;97480;Saint-Joseph (Manapany-les-Bains);Sud;Thé
-PASST;Pass'Temps;;97413;Cilaos;Centre;Thé
-PETIT04;Petits Plaisirs;;97421;Saint-Louis;Sud;Thé
-PROVA;SAS Provanille;;97439;Sainte-Rose;Est;Thé
-RHUMS;Les Rhums en Thé;;97490;Saint-Denis;Nord;Thé
-SABAG;Sabaguina;;97436;Saint-Leu;Ouest;Thé
-SAGAR;Saga du Rhum;;97453;Saint-Pierre;Sud;Thé
-SCAPR;SCA Provanille;;97412;Bras-Panon;Est;Thé
-SODIS;Sodisbio Saint-Paul;;97460;Saint-Paul;Ouest;Thé
-SODIS01;Sodisbio OI Saint-Pierre;;97410;Saint-Pierre;Sud;Thé
-SODIS02;Sodisbio OI Sainte-Clotilde;;97490;Sainte-Clotilde;Sud;Thé
-SODIS03;Sodisbio Est Saint-André;;97440;Saint-André;Nord;Thé
-SODIS04;Sodisbio Saint-Leu;;97424;Saint-Leu;Ouest;Thé
-SPLMA;SPL RMR Domaine de Maison Rouge;;97450;Saint-Louis;Sud;Thé
-SPLRM;SPL RMR Kelonia;;97436;Saint-Leu;Ouest;Thé
-SPLRM01;SPL RMR Boutique de Stella (Piton Saint-Leu);;97424;Saint-Leu;Ouest;Thé
-TIKAZ;Ti Kaz Koulèr;;97436;Saint-Leu;Ouest;Thé
-TRESO01;Trésor des Engagés;;97421;Saint-Louis;Sud;Thé
+Code;NOM;Code postal;Commune;Zone;Produits;Statut;Type estimé;Note
+ARTIS;Artisanat Océan Indien;97400;Saint-Denis;Nord;Thé;Actif (vérifié);Revendeur (stand marché);
+ASSO116;Association Place au Vrac;97424;Saint-Leu;Ouest;Thé;Actif (vérifié);Revendeur (épicerie collaborative);Comptoir du Vrac
+ASSOC86;EI Bertrand Bannerot;97413;Cilaos;Centre;Thé;À vérifier;Revendeur (par défaut);
+ATELI03;Atelier Alexandra;97440;Saint-André;Nord;Thé;À vérifier;Revendeur (par défaut);
+ATELI05;Atelier de Flo;97410;Saint-Pierre;Sud;Thé;À vérifier;Revendeur (par défaut);
+BARIL;Le Baril de Poudre;97442;Saint-Philippe;Sud;Thé;À vérifier;Revendeur (par défaut);
+BITAS;Bitasyon Bio;97442;Saint-Philippe;Sud;Thé;À vérifier;Revendeur (par défaut);
+BOYER;Boyer Patricia;97410;Saint-Pierre;Sud;Thé;À vérifier;Revendeur (par défaut);
+CASEA;La Case à Chocolat;97400;Saint-Denis;Nord;Thé;À vérifier;Revendeur (par défaut);
+CASEV;La Case Volcan;97442;Saint-Philippe;Sud;Thé;À vérifier;Revendeur (par défaut);
+CAZAN;La Cazanou;97433;Salazie;Centre;Thé;À vérifier;Revendeur (par défaut);
+CORAI;Corail Hélicoptères SAS;97434;Saint-Paul;Ouest;Thé;À vérifier;Revendeur (par défaut);
+CURPA;Cœur du Palmier;97434;Saint-Paul;Ouest;Thé;À vérifier;Revendeur (par défaut);
+DOMAI;Domaine des Tourelles;97431;La Plaine-des-Palmistes;Centre;Thé;À vérifier;Revendeur (par défaut);
+DOMAI05;Domaine de Bellevue;97450;Saint-Louis;Sud;Thé;À vérifier;Revendeur (par défaut);
+DOMIT;Domitile Artisanat;97430;Le Tampon;Sud;Thé;À vérifier;Revendeur (par défaut);
+DOMIT01;Domitile Marie-Line;97480;Saint-Joseph;Sud;Thé;À vérifier;Revendeur (par défaut);
+FEELO;La Fée Lokale;97460;Saint-Paul;Ouest;Thé;À vérifier;Revendeur (par défaut);
+GALER;La Galerie Artisanale;97490;Sainte-Clotilde;Nord;Thé;À vérifier;Revendeur (par défaut);
+JARDI;Le Jardin des Parfums & des Épices;97442;Saint-Philippe;Sud;Thé;À vérifier;Revendeur (par défaut);
+JARDI02;Les Jardineries de Bourbon;97432;Ravine des Cabris;Sud;Thé;À vérifier;Revendeur (par défaut);
+JARDI03;Les Jardins d'Héva;97433;Salazie;Centre;Thé;À vérifier;Revendeur (par défaut);
+JARDI05;Jardin d'Eden;97434;Saint-Paul;Ouest;Thé;À vérifier;Revendeur (par défaut);
+KARIN;Karine Artisanat;97400;Saint-Denis;Nord;Thé;À vérifier;Revendeur (par défaut);
+KAZAK;La Kaz à Kam;97427;L'Étang-Salé;Sud;Thé;À vérifier;Revendeur (par défaut);
+LETAL;L'Étal Saint-Joseph;97480;Saint-Joseph;Sud;Thé;À vérifier;Revendeur (par défaut);
+LIQUO;Liquoristerie Mamzel (Rhum Mamzel);97434;Saint-Leu;Ouest;Thé;À vérifier;Revendeur (par défaut);
+NANAS;Nanas Vanille;97410;Saint-Pierre;Sud;Thé;À vérifier;Revendeur (par défaut);
+NANAS;Nanas Vanille;97400;Saint-Denis;Nord;Thé;À vérifier;Revendeur (par défaut);
+NATHA;Nathalie Leichnig;97442;Saint-Philippe;Sud;Thé;À vérifier;Revendeur (par défaut);
+NATUR07;Natur'Run;97431;La Plaine-des-Palmistes;Centre;Thé;À vérifier;Revendeur (par défaut);
+OFFIC;Office du Tourisme;97400;Saint-Denis;Nord;Thé;À vérifier;Revendeur (par défaut);
+OFFIC04;O.T.I. de l'Est;97412;Bras-Panon;Est;Thé;À vérifier;Revendeur (par défaut);
+OTHE;SARL O'Thé;97424;Piton Saint-Leu;Ouest;Thé;À vérifier;Revendeur (par défaut);
+OTISU01;OTI Sud;97480;Saint-Joseph (Manapany-les-Bains);Sud;Thé;À vérifier;Revendeur (par défaut);
+PASST;Pass'Temps;97413;Cilaos;Centre;Thé;À vérifier;Revendeur (par défaut);
+PETIT04;Petits Plaisirs;97421;Saint-Louis;Sud;Thé;À vérifier;Revendeur (par défaut);
+PROVA;SAS Provanille;97439;Sainte-Rose;Est;Thé;À vérifier;Revendeur (par défaut);
+RHUMS;Les Rhums en Thé;97490;Saint-Denis;Nord;Thé;À vérifier;Revendeur (par défaut);
+SABAG;Sabaguina;97436;Saint-Leu;Ouest;Thé;À vérifier;Revendeur (par défaut);
+SAGAR;Saga du Rhum;97453;Saint-Pierre;Sud;Thé;À vérifier;Revendeur (par défaut);
+SCAPR;SCA Provanille;97412;Bras-Panon;Est;Thé;À vérifier;Revendeur (par défaut);
+SODIS;Sodisbio Saint-Paul;97460;Saint-Paul;Ouest;Thé;À vérifier;Revendeur (par défaut);
+SODIS01;Sodisbio OI Saint-Pierre;97410;Saint-Pierre;Sud;Thé;À vérifier;Revendeur (par défaut);
+SODIS02;Sodisbio OI Sainte-Clotilde;97490;Sainte-Clotilde;Sud;Thé;À vérifier;Revendeur (par défaut);
+SODIS03;Sodisbio Est Saint-André;97440;Saint-André;Nord;Thé;À vérifier;Revendeur (par défaut);
+SODIS04;Sodisbio Saint-Leu;97424;Saint-Leu;Ouest;Thé;À vérifier;Revendeur (par défaut);
+SPLMA;SPL RMR Domaine de Maison Rouge;97450;Saint-Louis;Sud;Thé;À vérifier;Revendeur (par défaut);
+SPLRM;SPL RMR Kelonia;97436;Saint-Leu;Ouest;Thé;À vérifier;Revendeur (par défaut);
+SPLRM01;SPL RMR Boutique de Stella (Piton Saint-Leu);97424;Saint-Leu;Ouest;Thé;À vérifier;Revendeur (par défaut);
+TIKAZ;Ti Kaz Koulèr;97436;Saint-Leu;Ouest;Thé;À vérifier;Revendeur (par défaut);
+TRESO01;Trésor des Engagés;97421;Saint-Louis;Sud;Thé;À vérifier;Revendeur (par défaut);
